@@ -38,6 +38,7 @@ export class TraductorService {
       {
         next: (response) => {
           this.setTraduccion(response.choices[0].text.trim());
+          console.log('HOla Mundo')
         },
         error:error => {
           console.error(error);
