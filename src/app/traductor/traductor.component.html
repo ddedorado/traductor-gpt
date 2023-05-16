@@ -1,0 +1,16 @@
+<main class="flex flex-col h-screen justify-start md:justify-center items-center">
+    <h2 class="text-3xl font-bold py-4">Traductor GTP</h2>
+    
+    <div class="w-full md:w-4/5 xl:w-2/5 flex flex-col md:flex-row justify-between items-center">
+        <textarea class="w-1/2 h-48 md:h-24 md:min-h-full p-2 resize-y rounded-md border-2 border-sky-500 focus:border-sky-700" [(ngModel)]="textoOriginal" placeholder="Ingresa el texto original"></textarea>
+        <div class="flex flex-col">
+            <button class="mx-4 mt-3 px-4 py-2 rounded-md text-white bg-sky-500 hover:bg-sky-700 shadow-none hover:shadow-md transition duration-150 hover:ease-in" type="button" (click)="traducir()">Traducir</button>
+            <select class="mx-4 my-3 px-4 py-2 rounded-md border-2 border-sky-500 focus:border-sky-700" [(ngModel)]="idiomaSeleccionado">
+                <option *ngFor="let idioma of idiomasDisponibles" [value]="idioma.code">
+                    {{ idioma.text }}
+                </option>
+            </select>
+        </div>
+        <div class="w-1/2 h-48 md:h-24 md:min-h-full p-2 rounded-md bg-slate-200 text-black">{{ traductorService.traduccion$ | async }}</div>
+    </div>
+</main>
